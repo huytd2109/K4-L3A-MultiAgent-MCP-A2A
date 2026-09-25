@@ -1,0 +1,101 @@
+{
+  "schema_version": "day09-l3a-output-v2",
+  "case_id": "L3A_CASE_034",
+  "assessment": {
+    "primary_issue": "late_delivery_logistics",
+    "case_status": "action_required",
+    "confidence": 0.96
+  },
+  "affected_entities": {
+    "order_ids": [
+      "973acef56bf70feefa8264d4e9f300fc"
+    ],
+    "item_ids": [
+      "item-973acef56bf7"
+    ],
+    "seller_ids": [
+      "seller-973acef56bf7"
+    ],
+    "payment_references": [],
+    "shipment_ids": []
+  },
+  "claim_assessments": [
+    {
+      "claim_id": "claim-034-a",
+      "verdict": "supported",
+      "confidence": 0.96,
+      "evidence_refs": [
+        "ev_YLgImu51Pd015JvSw5mSYgrvoPCzYR3A",
+        "ev_FI9bDs3wPIvBe5b1PzUtc3ZFG6-whlqS",
+        "ev_LjCNGJb3_-Lcymi0HQIuBGiXUqXntXOs"
+      ]
+    },
+    {
+      "claim_id": "claim-034-b",
+      "verdict": "partially_supported",
+      "confidence": 0.96,
+      "evidence_refs": [
+        "ev_YLgImu51Pd015JvSw5mSYgrvoPCzYR3A",
+        "ev_FI9bDs3wPIvBe5b1PzUtc3ZFG6-whlqS",
+        "ev_rBg16HKdWD5msrrtz2yxgWagrtnOYydO",
+        "ev_EF8DXWmj3fLqIOVG-DRAlBcmCOdQS2VU",
+        "ev_LjCNGJb3_-Lcymi0HQIuBGiXUqXntXOs"
+      ]
+    }
+  ],
+  "root_cause_analysis": {
+    "ranked_causes": [
+      {
+        "cause_code": "LATE_DELIVERY_LOGISTICS",
+        "rank": 1
+      }
+    ],
+    "responsible_parties": [
+      {
+        "party_type": "logistics_provider",
+        "party_id": null
+      }
+    ]
+  },
+  "evidence_refs": [
+    "ev_YLgImu51Pd015JvSw5mSYgrvoPCzYR3A",
+    "ev_FI9bDs3wPIvBe5b1PzUtc3ZFG6-whlqS",
+    "ev_rBg16HKdWD5msrrtz2yxgWagrtnOYydO",
+    "ev_EF8DXWmj3fLqIOVG-DRAlBcmCOdQS2VU",
+    "ev_LjCNGJb3_-Lcymi0HQIuBGiXUqXntXOs"
+  ],
+  "data_conflicts": [
+    {
+      "field": "order_items",
+      "sources": [
+        "get_order_items",
+        "get_order"
+      ],
+      "selected_source": "get_order_items",
+      "resolution_code": "ORDER_TIMELINE_SCOPE"
+    },
+    {
+      "field": "event_at",
+      "sources": [
+        "get_payment_timeline",
+        "get_order"
+      ],
+      "selected_source": "get_payment_timeline",
+      "resolution_code": "ORDER_TIMELINE_SCOPE"
+    }
+  ],
+  "financial_resolution": {
+    "currency": "BRL",
+    "recommended_refund_brl": 16.0,
+    "refund_lines": [
+      {
+        "reason_code": "LATE_DELIVERY_LOGISTICS",
+        "amount_brl": 16.0,
+        "entity_id": "973acef56bf70feefa8264d4e9f300fc"
+      }
+    ]
+  },
+  "resolution_actions": [
+    "refund_freight"
+  ]
+}

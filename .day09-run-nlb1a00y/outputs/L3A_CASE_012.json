@@ -1,0 +1,89 @@
+{
+  "schema_version": "day09-l3a-output-v2",
+  "case_id": "L3A_CASE_012",
+  "assessment": {
+    "primary_issue": "unavailable_order_paid",
+    "case_status": "action_required",
+    "confidence": 0.96
+  },
+  "affected_entities": {
+    "order_ids": [
+      "103de323ece563a1012b4b6adf5a81b2"
+    ],
+    "item_ids": [
+      "item-103de323ece5"
+    ],
+    "seller_ids": [
+      "seller-103de323ece5"
+    ],
+    "payment_references": [],
+    "shipment_ids": []
+  },
+  "claim_assessments": [
+    {
+      "claim_id": "claim-012-a",
+      "verdict": "supported",
+      "confidence": 0.96,
+      "evidence_refs": [
+        "ev_OCdB-3s42o4jwEqnMMivElP1pNLwzteX",
+        "ev_rPC4Hf-8i6xTl1FZRde2KzvgohO5PQ35"
+      ]
+    },
+    {
+      "claim_id": "claim-012-b",
+      "verdict": "partially_supported",
+      "confidence": 0.96,
+      "evidence_refs": [
+        "ev_OCdB-3s42o4jwEqnMMivElP1pNLwzteX",
+        "ev_j06H8BjF0kST93aLoFeFs1B4cazcF83d",
+        "ev_rPC4Hf-8i6xTl1FZRde2KzvgohO5PQ35",
+        "ev_vBo3gMLq6rXZRldEfHX8SXv6TqYf5PgB"
+      ]
+    }
+  ],
+  "root_cause_analysis": {
+    "ranked_causes": [
+      {
+        "cause_code": "UNAVAILABLE_ORDER_PAID",
+        "rank": 1
+      }
+    ],
+    "responsible_parties": [
+      {
+        "party_type": "seller",
+        "party_id": "seller-103de323ece5"
+      }
+    ]
+  },
+  "evidence_refs": [
+    "ev_OCdB-3s42o4jwEqnMMivElP1pNLwzteX",
+    "ev_j06H8BjF0kST93aLoFeFs1B4cazcF83d",
+    "ev_rPC4Hf-8i6xTl1FZRde2KzvgohO5PQ35",
+    "ev_vBo3gMLq6rXZRldEfHX8SXv6TqYf5PgB"
+  ],
+  "data_conflicts": [
+    {
+      "field": "responsible_parties.seller",
+      "sources": [
+        "get_policy",
+        "get_order_items"
+      ],
+      "selected_source": "get_order_items",
+      "resolution_code": "ENTITY_SCOPE_OVERRIDES_POLICY_ID"
+    }
+  ],
+  "financial_resolution": {
+    "currency": "BRL",
+    "recommended_refund_brl": 89.0,
+    "refund_lines": [
+      {
+        "reason_code": "UNAVAILABLE_ORDER_PAID",
+        "amount_brl": 89.0,
+        "entity_id": "103de323ece563a1012b4b6adf5a81b2"
+      }
+    ]
+  },
+  "resolution_actions": [
+    "issue_refund"
+  ]
+}

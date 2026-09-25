@@ -1,0 +1,107 @@
+{
+  "schema_version": "day09-l3a-output-v2",
+  "case_id": "L3A_CASE_042",
+  "assessment": {
+    "primary_issue": "unavailable_order_paid",
+    "case_status": "action_required",
+    "confidence": 0.96
+  },
+  "affected_entities": {
+    "order_ids": [
+      "8a5fc33c79bf3f4d9bbcc3dceb6b67c4"
+    ],
+    "item_ids": [
+      "item-8a5fc33c79bf"
+    ],
+    "seller_ids": [
+      "seller-8a5fc33c79bf"
+    ],
+    "payment_references": [],
+    "shipment_ids": []
+  },
+  "claim_assessments": [
+    {
+      "claim_id": "claim-042-a",
+      "verdict": "supported",
+      "confidence": 0.96,
+      "evidence_refs": [
+        "ev_AWj2j6o8RvA4Fixjm5umKAYAyCcVo81s",
+        "ev_6fYYQuW1tvaXxeI5R-t5vdJOQCnR2TTG"
+      ]
+    },
+    {
+      "claim_id": "claim-042-b",
+      "verdict": "supported",
+      "confidence": 0.96,
+      "evidence_refs": [
+        "ev_AWj2j6o8RvA4Fixjm5umKAYAyCcVo81s",
+        "ev_1_FUBroRByLHRIc470Y7o5BVseADOZqy",
+        "ev_6fYYQuW1tvaXxeI5R-t5vdJOQCnR2TTG",
+        "ev_Hv2KHhhlVCjRkclmy4wNCr3E2PepP4AV"
+      ]
+    }
+  ],
+  "root_cause_analysis": {
+    "ranked_causes": [
+      {
+        "cause_code": "UNAVAILABLE_ORDER_PAID",
+        "rank": 1
+      }
+    ],
+    "responsible_parties": [
+      {
+        "party_type": "seller",
+        "party_id": "seller-8a5fc33c79bf"
+      }
+    ]
+  },
+  "evidence_refs": [
+    "ev_AWj2j6o8RvA4Fixjm5umKAYAyCcVo81s",
+    "ev_1_FUBroRByLHRIc470Y7o5BVseADOZqy",
+    "ev_6fYYQuW1tvaXxeI5R-t5vdJOQCnR2TTG",
+    "ev_Hv2KHhhlVCjRkclmy4wNCr3E2PepP4AV"
+  ],
+  "data_conflicts": [
+    {
+      "field": "order_items",
+      "sources": [
+        "get_order_items",
+        "get_order"
+      ],
+      "selected_source": "get_order_items",
+      "resolution_code": "ORDER_TIMELINE_SCOPE"
+    },
+    {
+      "field": "event_at",
+      "sources": [
+        "get_payment_timeline",
+        "get_order"
+      ],
+      "selected_source": "get_payment_timeline",
+      "resolution_code": "ORDER_TIMELINE_SCOPE"
+    },
+    {
+      "field": "responsible_parties.seller",
+      "sources": [
+        "get_policy",
+        "get_order_items"
+      ],
+      "selected_source": "get_order_items",
+      "resolution_code": "ENTITY_SCOPE_OVERRIDES_POLICY_ID"
+    }
+  ],
+  "financial_resolution": {
+    "currency": "BRL",
+    "recommended_refund_brl": 89.0,
+    "refund_lines": [
+      {
+        "reason_code": "UNAVAILABLE_ORDER_PAID",
+        "amount_brl": 89.0,
+        "entity_id": "8a5fc33c79bf3f4d9bbcc3dceb6b67c4"
+      }
+    ]
+  },
+  "resolution_actions": [
+    "issue_refund"
+  ]
+}

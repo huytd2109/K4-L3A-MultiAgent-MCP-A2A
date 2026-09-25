@@ -1,0 +1,100 @@
+{
+  "schema_version": "day09-l3a-output-v2",
+  "case_id": "L3A_CASE_029",
+  "assessment": {
+    "primary_issue": "refund_failed",
+    "case_status": "action_required",
+    "confidence": 0.96
+  },
+  "affected_entities": {
+    "order_ids": [
+      "5c932e0a181410b67c77daaed30991af"
+    ],
+    "item_ids": [
+      "item-5c932e0a1814"
+    ],
+    "seller_ids": [
+      "seller-5c932e0a1814"
+    ],
+    "payment_references": [],
+    "shipment_ids": []
+  },
+  "claim_assessments": [
+    {
+      "claim_id": "claim-029-a",
+      "verdict": "supported",
+      "confidence": 0.96,
+      "evidence_refs": [
+        "ev_KGhO_FlF-Z03BKpw1IKLDJGACZFhP-PH",
+        "ev_2DTFqVzkr57JZ3mWeRCsyE_UPMUlM8Wl"
+      ]
+    },
+    {
+      "claim_id": "claim-029-b",
+      "verdict": "supported",
+      "confidence": 0.96,
+      "evidence_refs": [
+        "ev_KGhO_FlF-Z03BKpw1IKLDJGACZFhP-PH",
+        "ev_UjpO6dvhZDtUjsTXqmycTvttY-EAji9q",
+        "ev_TaE4-4_VxG7Pr2YIBhekpAI9ApxBpPqp",
+        "ev_ZhfBJwMOX4jTK65RyJvpmDXCMENZ-zmL",
+        "ev_2DTFqVzkr57JZ3mWeRCsyE_UPMUlM8Wl"
+      ]
+    }
+  ],
+  "root_cause_analysis": {
+    "ranked_causes": [
+      {
+        "cause_code": "REFUND_FAILED",
+        "rank": 1
+      }
+    ],
+    "responsible_parties": [
+      {
+        "party_type": "payment_provider",
+        "party_id": null
+      }
+    ]
+  },
+  "evidence_refs": [
+    "ev_KGhO_FlF-Z03BKpw1IKLDJGACZFhP-PH",
+    "ev_UjpO6dvhZDtUjsTXqmycTvttY-EAji9q",
+    "ev_TaE4-4_VxG7Pr2YIBhekpAI9ApxBpPqp",
+    "ev_ZhfBJwMOX4jTK65RyJvpmDXCMENZ-zmL",
+    "ev_2DTFqVzkr57JZ3mWeRCsyE_UPMUlM8Wl"
+  ],
+  "data_conflicts": [
+    {
+      "field": "order_items",
+      "sources": [
+        "get_order_items",
+        "get_order"
+      ],
+      "selected_source": "get_order_items",
+      "resolution_code": "ORDER_TIMELINE_SCOPE"
+    },
+    {
+      "field": "event_at",
+      "sources": [
+        "get_payment_timeline",
+        "get_order"
+      ],
+      "selected_source": "get_payment_timeline",
+      "resolution_code": "ORDER_TIMELINE_SCOPE"
+    }
+  ],
+  "financial_resolution": {
+    "currency": "BRL",
+    "recommended_refund_brl": 52.0,
+    "refund_lines": [
+      {
+        "reason_code": "REFUND_FAILED",
+        "amount_brl": 52.0,
+        "entity_id": "5c932e0a181410b67c77daaed30991af"
+      }
+    ]
+  },
+  "resolution_actions": [
+    "retry_refund"
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "schema_version": "day09-l3a-output-v2",
+  "case_id": "L3A_CASE_038",
+  "assessment": {
+    "primary_issue": "refund_pending",
+    "case_status": "needs_investigation",
+    "confidence": 0.96
+  },
+  "affected_entities": {
+    "order_ids": [
+      "6b27933c6a46e3d66203137ad1fdb678"
+    ],
+    "item_ids": [
+      "item-6b27933c6a46"
+    ],
+    "seller_ids": [
+      "seller-6b27933c6a46"
+    ],
+    "payment_references": [],
+    "shipment_ids": []
+  },
+  "claim_assessments": [
+    {
+      "claim_id": "claim-038-a",
+      "verdict": "supported",
+      "confidence": 0.96,
+      "evidence_refs": [
+        "ev_930KA4C5i0owD9xqoPrppGnYY02hs9_a",
+        "ev_FaK2TJb77As765TGOHhHd5KYs4SHDdsI"
+      ]
+    },
+    {
+      "claim_id": "claim-038-b",
+      "verdict": "insufficient_evidence",
+      "confidence": 0.25,
+      "evidence_refs": [
+        "ev_930KA4C5i0owD9xqoPrppGnYY02hs9_a",
+        "ev_zO6_Za5HZcymAlhB0DHN_aMgnPzFnHHM",
+        "ev_52rZVAiKg_JxWiBv9vD3LETjmlqBdZdq",
+        "ev_v3BRmxNRJ5R_7eFR60OhQjWY5O2Hzgq2",
+        "ev_FaK2TJb77As765TGOHhHd5KYs4SHDdsI"
+      ]
+    }
+  ],
+  "root_cause_analysis": {
+    "ranked_causes": [
+      {
+        "cause_code": "REFUND_PENDING",
+        "rank": 1
+      }
+    ],
+    "responsible_parties": [
+      {
+        "party_type": "payment_provider",
+        "party_id": null
+      }
+    ]
+  },
+  "evidence_refs": [
+    "ev_930KA4C5i0owD9xqoPrppGnYY02hs9_a",
+    "ev_zO6_Za5HZcymAlhB0DHN_aMgnPzFnHHM",
+    "ev_52rZVAiKg_JxWiBv9vD3LETjmlqBdZdq",
+    "ev_v3BRmxNRJ5R_7eFR60OhQjWY5O2Hzgq2",
+    "ev_FaK2TJb77As765TGOHhHd5KYs4SHDdsI"
+  ],
+  "data_conflicts": [
+    {
+      "field": "order_items",
+      "sources": [
+        "get_order_items",
+        "get_order"
+      ],
+      "selected_source": "get_order_items",
+      "resolution_code": "ORDER_TIMELINE_SCOPE"
+    },
+    {
+      "field": "event_at",
+      "sources": [
+        "get_payment_timeline",
+        "get_order"
+      ],
+      "selected_source": "get_payment_timeline",
+      "resolution_code": "ORDER_TIMELINE_SCOPE"
+    }
+  ],
+  "financial_resolution": {
+    "currency": "BRL",
+    "recommended_refund_brl": 0.0,
+    "refund_lines": []
+  },
+  "resolution_actions": [
+    "monitor_refund"
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "schema_version": "day09-l3a-output-v2",
+  "case_id": "L3A_CASE_007",
+  "assessment": {
+    "primary_issue": "duplicate_charge",
+    "case_status": "action_required",
+    "confidence": 0.8
+  },
+  "affected_entities": {
+    "order_ids": [
+      "ded456690bcb2ffd4def86541479037f"
+    ],
+    "item_ids": [
+      "item-ded456690bcb"
+    ],
+    "seller_ids": [
+      "seller-ded456690bcb"
+    ],
+    "payment_references": [],
+    "shipment_ids": []
+  },
+  "claim_assessments": [
+    {
+      "claim_id": "claim-007-a",
+      "verdict": "supported",
+      "confidence": 0.8,
+      "evidence_refs": [
+        "ev__m4kZixRXc6vHNmCbxfufgH4_giu2URA",
+        "ev_jxYR43BBtM__DcwImZ_cMGPmO0_Fceit",
+        "ev_QThdn8_U3kudbtqi0CU-zveB5vwX_9y2"
+      ]
+    },
+    {
+      "claim_id": "claim-007-b",
+      "verdict": "partially_supported",
+      "confidence": 0.8,
+      "evidence_refs": [
+        "ev__m4kZixRXc6vHNmCbxfufgH4_giu2URA",
+        "ev_jxYR43BBtM__DcwImZ_cMGPmO0_Fceit",
+        "ev_QThdn8_U3kudbtqi0CU-zveB5vwX_9y2",
+        "ev_2SoEUKpwx736P2h67BoqA-un85x2jX1G"
+      ]
+    }
+  ],
+  "root_cause_analysis": {
+    "ranked_causes": [
+      {
+        "cause_code": "DUPLICATE_CHARGE",
+        "rank": 1
+      }
+    ],
+    "responsible_parties": [
+      {
+        "party_type": "payment_provider",
+        "party_id": null
+      }
+    ]
+  },
+  "evidence_refs": [
+    "ev__m4kZixRXc6vHNmCbxfufgH4_giu2URA",
+    "ev_jxYR43BBtM__DcwImZ_cMGPmO0_Fceit",
+    "ev_QThdn8_U3kudbtqi0CU-zveB5vwX_9y2",
+    "ev_2SoEUKpwx736P2h67BoqA-un85x2jX1G"
+  ],
+  "data_conflicts": [
+    {
+      "field": "order_items",
+      "sources": [
+        "get_order_items",
+        "get_order"
+      ],
+      "selected_source": "get_order_items",
+      "resolution_code": "ORDER_TIMELINE_SCOPE"
+    },
+    {
+      "field": "event_at",
+      "sources": [
+        "get_payment_timeline",
+        "get_order"
+      ],
+      "selected_source": "get_payment_timeline",
+      "resolution_code": "ORDER_TIMELINE_SCOPE"
+    }
+  ],
+  "financial_resolution": {
+    "currency": "BRL",
+    "recommended_refund_brl": 64.0,
+    "refund_lines": [
+      {
+        "reason_code": "DUPLICATE_CHARGE",
+        "amount_brl": 64.0,
+        "entity_id": "ded456690bcb2ffd4def86541479037f"
+      }
+    ]
+  },
+  "resolution_actions": [
+    "refund_duplicate_charge"
+  ]
+}

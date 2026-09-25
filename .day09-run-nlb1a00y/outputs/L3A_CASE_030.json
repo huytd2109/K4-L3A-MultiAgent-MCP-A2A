@@ -1,0 +1,97 @@
+{
+  "schema_version": "day09-l3a-output-v2",
+  "case_id": "L3A_CASE_030",
+  "assessment": {
+    "primary_issue": "unsupported_claim",
+    "case_status": "no_action",
+    "confidence": 0.85
+  },
+  "affected_entities": {
+    "order_ids": [
+      "405be8487a7fde1db0bc31ad6b08050a"
+    ],
+    "item_ids": [
+      "item-405be8487a7f"
+    ],
+    "seller_ids": [
+      "seller-405be8487a7f"
+    ],
+    "payment_references": [],
+    "shipment_ids": []
+  },
+  "claim_assessments": [
+    {
+      "claim_id": "claim-030-a",
+      "verdict": "supported",
+      "confidence": 0.85,
+      "evidence_refs": [
+        "ev_xmjMPUogPYejkxCG-IfrvLcyRssMUy2Z",
+        "ev_gsG6GZshOlVlIsn-oQH8SgjYC2ra5_T3",
+        "ev_d6tpDuBDJ9iyEHpYyWD1Ec5eMNygr_oz",
+        "ev_SfVFJasZWrtkYZRsouVDkiFdgpLhhU7a",
+        "ev_s_S10Uv1LoYrfK5HwFynDjzz6bvVYzXp"
+      ]
+    },
+    {
+      "claim_id": "claim-030-b",
+      "verdict": "unsupported",
+      "confidence": 0.85,
+      "evidence_refs": [
+        "ev_xmjMPUogPYejkxCG-IfrvLcyRssMUy2Z",
+        "ev_gsG6GZshOlVlIsn-oQH8SgjYC2ra5_T3",
+        "ev_d6tpDuBDJ9iyEHpYyWD1Ec5eMNygr_oz",
+        "ev_SfVFJasZWrtkYZRsouVDkiFdgpLhhU7a",
+        "ev_s_S10Uv1LoYrfK5HwFynDjzz6bvVYzXp"
+      ]
+    }
+  ],
+  "root_cause_analysis": {
+    "ranked_causes": [
+      {
+        "cause_code": "UNSUPPORTED_CLAIM",
+        "rank": 1
+      }
+    ],
+    "responsible_parties": [
+      {
+        "party_type": "customer",
+        "party_id": null
+      }
+    ]
+  },
+  "evidence_refs": [
+    "ev_xmjMPUogPYejkxCG-IfrvLcyRssMUy2Z",
+    "ev_gsG6GZshOlVlIsn-oQH8SgjYC2ra5_T3",
+    "ev_d6tpDuBDJ9iyEHpYyWD1Ec5eMNygr_oz",
+    "ev_SfVFJasZWrtkYZRsouVDkiFdgpLhhU7a",
+    "ev_s_S10Uv1LoYrfK5HwFynDjzz6bvVYzXp"
+  ],
+  "data_conflicts": [
+    {
+      "field": "order_items",
+      "sources": [
+        "get_order_items",
+        "get_order"
+      ],
+      "selected_source": "get_order_items",
+      "resolution_code": "ORDER_TIMELINE_SCOPE"
+    },
+    {
+      "field": "event_at",
+      "sources": [
+        "get_payment_timeline",
+        "get_order"
+      ],
+      "selected_source": "get_payment_timeline",
+      "resolution_code": "ORDER_TIMELINE_SCOPE"
+    }
+  ],
+  "financial_resolution": {
+    "currency": "BRL",
+    "recommended_refund_brl": 0.0,
+    "refund_lines": []
+  },
+  "resolution_actions": [
+    "document_no_action"
+  ]
+}
