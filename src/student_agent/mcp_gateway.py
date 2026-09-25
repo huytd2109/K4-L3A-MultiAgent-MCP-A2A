@@ -24,7 +24,12 @@ class EvidenceGateway:
     async def call(self, tool_name: str, *, case_id: str, **arguments: str) -> dict[str, Any]:
         payload = {"case_id": case_id, **arguments}
         result = await self._session.call_tool(tool_name, arguments=payload)
-        if result.isError:
+        # MCP SDK releases expose this field under either the wire-format
+        # spelling (``isError``) or the Python spelling (``is_error``).
+        # Supporting both keeps the starter compatible with the pinned SDK
+        # without weakening error handling.
+        is_error = getattr(result, "isError", getattr(result, "is_error", False))
+        if is_error:
             message = " ".join(
                 block.text for block in result.content if getattr(block, "text", None)
             )
